@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Market {
     public String market_name;
+    public int market_id;
 
     public Market() {
 
@@ -12,9 +13,20 @@ public class Market {
         this.market_name = market_name;
     }
 
+    public Market(int market_id, String market_name){
+        this.market_id = market_id;
+        this.market_name = market_name;
+    }
     public String getMarketName() {
         return market_name;
     }
+
+    public int getMarketID(){
+        return market_id;
+    }
+
+    public void setMarketID(int market_id){this.market_id = market_id;}
+
 
     public void setMarketName(String market_name) {
         this.market_name = market_name;

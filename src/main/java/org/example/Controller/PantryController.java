@@ -3,7 +3,6 @@ package org.example.Controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.Javalin;
-import io.javalin.http.Context;
 import org.example.Model.Market;
 import org.example.Model.Pantry;
 import org.example.Service.PantryService;
@@ -11,15 +10,14 @@ import org.example.Service.MarketService;
 import java.util.List;
 import org.example.Exception.MarketException;
 import org.example.Exception.PantryException;
-import java.util.ArrayList;
 //import java.util.Objects;
 
 
 public class PantryController {
     //Javalin app = Javalin.create(/*config*/).get("/", ctx -> ctx.result("Hello World???")).start(7070);
 
-    static PantryService pantry_service;
-    static MarketService market_service;
+    PantryService pantry_service;
+    MarketService market_service;
 
     public PantryController() {
         this.pantry_service = new PantryService();
@@ -52,7 +50,7 @@ public class PantryController {
                 context.status(400);
             }
         });
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 //        app.post("/pantry/", PantryController::postIngredientHandler);
         app.get("/market/", context -> {
             List<Market> market_list = market_service.getAllMarkets();

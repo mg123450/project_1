@@ -6,17 +6,20 @@ import org.example.Model.Market;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.*;
+import org.example.DAO.MarketDAO;
 
 
 public class MarketService {
-    List<Market> market_list;
-
-    public MarketService() {
-        this.market_list = new ArrayList<>();
+//    List<Market> market_list;
+    MarketDAO marketDAO;
+    public MarketService(MarketDAO marketDAO) {
+        this.marketDAO = new marketDAO;
     }
 
     public void addMarket(Market m) throws MarketException {
         Main.log.info("adding a market");
+
+        List<Market> market_list = marketDAO.getAllMarket();
 
         if (m.getMarketName().isBlank()) {
             Main.log.warn("empty market name");
@@ -27,12 +30,21 @@ public class MarketService {
             Main.log.warn("the market, " + m.getMarketName() + ", exists already");
             throw new MarketException("market already exists");
         }else {
-            market_list.add(m);
+            marketDAO.addMarket(m);
+        }
+    }
+
+    public Market getMarketById(int id) throws MarketException {
+        Market m = marketDAO.getMarketById(id);
+        if (m == null) {
+            throw new MarketException("not matching ID in market_id");
+        } else {
+            return m;
         }
     }
 
     public List<Market> getAllMarkets() {
-        Main.log.info("markets list: " + market_list);
+        List<Market> market_list = marketDAO.getAllMarket();
         return market_list;
     }
 }

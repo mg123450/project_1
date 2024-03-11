@@ -3,6 +3,9 @@ import io.javalin.Javalin;
 import org.example.Controller.PantryController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.example.Model.*;
+import org.example.Service.*;
+import org.example.DAO.*;
 
 public class Main {
     public static Logger log = LoggerFactory.getLogger(Main.class);
