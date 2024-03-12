@@ -1,0 +1,7 @@
+2024-03-12 08:48:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MARKET" already exists; SQL statement:
+
+
+CREATE TABLE market (
+    market_id int auto_increment primary key
+    ,market_name varchar(255 [42101-214]
